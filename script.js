@@ -1,4 +1,5 @@
 //your JS code here. If required.
+
 const bands = [
   'The Plot in You',
   'The Devil Wears Prada',
@@ -26,10 +27,15 @@ function removeArticle(name) {
 }
 
 bands.sort(function(a, b) {
-  if (removeArticle(a) > removeArticle(b)) {
+  let bandA = removeArticle(a).toLowerCase();
+  let bandB = removeArticle(b).toLowerCase();
+
+  if (bandA > bandB) {
     return 1;
-  } else {
+  } else if (bandA < bandB) {
     return -1;
+  } else {
+    return 0;
   }
 });
 
