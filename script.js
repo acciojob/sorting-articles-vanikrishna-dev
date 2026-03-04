@@ -1,5 +1,3 @@
-//your JS code here. If required.
-
 const bands = [
   'The Plot in You',
   'The Devil Wears Prada',
@@ -16,33 +14,18 @@ const bands = [
   'An Old Dog'
 ];
 
-function removeArticle(name) {
-  let words = name.split(" ");
-
-  if (words[0] === "A" || words[0] === "An" || words[0] === "The") {
-    words.shift();
-  }
-
-  return words.join(" ");
+function strip(name) {
+  return name.replace(/^(a |an |the )/i, "").trim();
 }
 
 bands.sort(function(a, b) {
-  let bandA = removeArticle(a).toLowerCase();
-  let bandB = removeArticle(b).toLowerCase();
-
-  if (bandA > bandB) {
-    return 1;
-  } else if (bandA < bandB) {
-    return -1;
-  } else {
-    return 0;
-  }
+  return strip(a).localeCompare(strip(b));
 });
 
 const ul = document.getElementById("band");
 
-for (let i = 0; i < bands.length; i++) {
-  let li = document.createElement("li");
-  li.textContent = bands[i];
+bands.forEach(function(band) {
+  const li = document.createElement("li");
+  li.textContent = band;
   ul.appendChild(li);
-}
+});
