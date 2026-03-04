@@ -22,10 +22,10 @@ bands.sort(function(a, b) {
   return strip(a).localeCompare(strip(b));
 });
 
-const ul = document.getElementById("band");
+const ul = document.getElementById("bands");
 
 bands.forEach(function(band) {
   const li = document.createElement("li");
-  li.textContent = band;
+  li.textContent = bands;
   ul.appendChild(li);
 });
